@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// Nome do pacote 
+package services_server;
+
+service Communication {
+  rpc get_port (ServName) returns (PortReply) {}
+  rpc get_desc (ServName) returns (DescReply) {}
+}
+  
+message ServName {
+  string name = 1; 
+}
+  
+message PortReply {
+  int32 port = 1;
+}
+
+// Modelo /etc/service separado por informação
+message DescReply {
+  string name = 1;
+  int32 port = 2;
+  string protocol = 3;
+  string aliases = 4;
+  string comment = 5;
+}
+  
